@@ -1,0 +1,29 @@
+name: DevSecOps Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - feature/devsecops-pipeline
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  source-check:
+    name: Check Juice Shop source
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout DevSecOps repository
+        uses: actions/checkout@v4
+
+      - name: Verify Juice Shop source
+        run: |
+          test -f juice-shop/package.json
+          echo "Juice Shop source found"
+
+      - name: Show source version
+        run: |
+          echo "Expected Juice Shop commit:"
+          echo "c9f99228d9d56afb5f5ca7925376292f7fa44b13"
