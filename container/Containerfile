@@ -1,4 +1,4 @@
-FROM docker.io/library/node:24 AS installer
+FROM docker.io/library/node:24@sha256:2f6533894e81c654764273b03a065aa3265fa50db292ba8348b6c4bb77233e98 AS installer
 COPY . /juice-shop
 WORKDIR /juice-shop
 RUN npm install -g typescript@^6.0.3
