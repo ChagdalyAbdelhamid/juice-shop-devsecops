@@ -66,3 +66,20 @@ jobs:
           severity: CRITICAL,HIGH
           ignore-unfixed: true
           exit-code: '0'
+
+  semgrep:
+    name: Scan code with Semgrep
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    container:
+      image: semgrep/semgrep
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Run Semgrep scan
+        run: semgrep scan --config auto .
